@@ -40,35 +40,37 @@
       <h3>Charger</h3>
       <p>Fast charging for all devices</p>
       <p id="price"><b>₹499</b></p>
-      <button id="rzp-button1">Pay Now</button>
+      <button class="payBtn" 
+        onmouseover="this.style.backgroundColor='#287aa9';"
+        onmouseout="this.style.backgroundColor='#3399cc';">Pay Now</button>
     </div>
     <div class="product">
       <img src="images/powerbank.jpg" alt="Powerbank">
       <h3>Powerbank</h3>
       <p>Keep your devices charged anywhere</p>
       <p id="price"><b>₹599</b></p>
-      <button id="rzp-button1">Pay Now</button>
+      <button class="payBtn">Pay Now</button>
     </div>
     <div class="product">
       <img src="images/mobile_cover.jpg" alt="Cover">
       <h3>Mobile Cover</h3>
       <p>Stylish & protective covers</p>
       <p id="price"><b>₹99</b></p>
-      <button id="rzp-button1">Pay Now</button>
+      <button class="payBtn">Pay Now</button>
     </div>
     <div class="product">
       <img src="images/earphones.jpg" alt="Earphone">
       <h3>Earphones</h3>
       <p>Crystal clear sound</p>
       <p id="price"><b>₹99</b></p>
-      <button id="rzp-button1">Pay Now</button>
+      <button class="payBtn">Pay Now</button>
     </div>
     <div class="product">
       <img src="images/tempered_glass.jpg" alt="Tempered Glass">
       <h3>Tempered Glass</h3>
       <p>Strong protection for your screen</p>
       <p id="price"><b>₹149</b></p>
-      <button id="rzp-button1">Pay Now</button>
+      <button class="payBtn">Pay Now</button>
     </div>
   </section>
   <section id="offers" class="offer">
@@ -107,7 +109,9 @@
   };
   var rzp1 = new Razorpay(options);
 
-  document.getElementById('rzp-button1').onclick = function(e){
+  // Attach to all buttons with class "payBtn"
+  document.querySelectorAll(".payBtn").forEach(function(btn){
+    btn.addEventListener("click", function(e){
       rzp1.open();
       e.preventDefault();
 }
