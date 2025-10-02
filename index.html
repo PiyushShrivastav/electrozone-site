@@ -86,12 +86,6 @@
     &copy; 2025 Shrivastav ElectroZone | All Rights Reserved
   </footer>
   <script>
-    // Get price from HTML
-  let price = document.getElementById("price").innerHTML;
-  // Remove unwanted characters (₹, $, commas, spaces, etc.)
-  price = price.replace(/[^0-9.]/g, "");
-  // Convert to paise (multiply by 100)
-  let amount = parseFloat(price) * 100;
   var options = {
       "key": "rzp_test_RObXB2QyEtj7Sy", // From Razorpay Dashboard
       "amount": amount, // Amount in paise (50000 = ₹500)
@@ -109,13 +103,26 @@
   };
   var rzp1 = new Razorpay(options);
 
-  // Attach to all buttons with class "payBtn"
+  // Attach event to all Pay Now buttons
   document.querySelectorAll(".payBtn").forEach(function(btn){
     btn.addEventListener("click", function(e){
-      rzp1.open();
       e.preventDefault();
-      });
+
+      // Find the price inside the same product div
+      let priceText = this.closest(".product").querySelector(".price").innerText;
+
+      // Remove currency symbols etc.
+      let cleanPrice = priceText.replace(/[^0-9.]/g, "");
+      let amount = parseFloat(cleanPrice) * 100; // Convert to paise
+
+      // Update amount dynamically
+      options.amount = amount;
+
+      // Open Razorpay checkout
+      var rzp1 = new Razorpay(options);
+      rzp1.open();
     });
+  });
 </script>
 </body>
 </html>
