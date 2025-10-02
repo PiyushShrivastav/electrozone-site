@@ -71,12 +71,35 @@
   </section>
   <section id="contact" style="padding:2rem; text-align:center;">
     <h2>Contact Us</h2>
-    <p><b>Address:</b> Chauhan Flex Habibpur near KK Food</p>
-    <p><b>Phone:</b> +91-XXXXXXXXXX</p>
+    <p><b>Address:</b> Chauhan Graphics Habibpur near KK Food</p>
+    <p><b>Phone:</b> +91-8789672384</p>
     <p><b>Email:</b> info@shrivastavelectrozone.com</p>
   </section>
   <footer>
     &copy; 2025 Shrivastav ElectroZone | All Rights Reserved
   </footer>
+  <script>
+  var options = {
+      "key": "rzp_test_RObXB2QyEtj7Sy", // From Razorpay Dashboard
+      "amount": "50000", // Amount in paise (50000 = ₹500)
+      "currency": "INR",
+      "name": "My Website",
+      "description": "Test Transaction",
+      "image": "https://yourdomain.com/logo.png", // optional
+      "handler": function (response){
+          alert("Payment successful!\nPayment ID: " + response.razorpay_payment_id);
+          // 👉 Here you can call your backend API to save payment info
+      },
+    "theme": {
+        "color": "#3399cc"
+    }
+  };
+  var rzp1 = new Razorpay(options);
+
+  document.getElementById('rzp-button1').onclick = function(e){
+      rzp1.open();
+      e.preventDefault();
+}
+</script>
 </body>
 </html>
