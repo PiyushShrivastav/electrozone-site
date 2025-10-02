@@ -86,7 +86,7 @@
     &copy; 2025 Shrivastav ElectroZone | All Rights Reserved
   </footer>
   <script>
-  var options = {
+  var  baseOptions = {
       "key": "rzp_test_RObXB2QyEtj7Sy", // From Razorpay Dashboard
       "amount": amount, // Amount in paise (50000 = ₹500)
       "currency": "INR",
@@ -114,6 +114,11 @@
       // Remove currency symbols etc.
       let cleanPrice = priceText.replace(/[^0-9.]/g, "");
       let amount = parseFloat(cleanPrice) * 100; // Convert to paise
+
+       // Clone base options and add dynamic amount + product name
+      var options = Object.assign({}, baseOptions);
+      options.amount = amount;
+      options.name = this.closest(".product").querySelector("h3").innerText;
 
       // Update amount dynamically
       options.amount = amount;
