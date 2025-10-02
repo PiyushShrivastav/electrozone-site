@@ -79,12 +79,15 @@
     &copy; 2025 Shrivastav ElectroZone | All Rights Reserved
   </footer>
   <script>
+    // Get price from HTML
+  let price = document.getElementById("price").innerHTML;
+  // Remove unwanted characters (₹, $, commas, spaces, etc.)
+  price = price.replace(/[^0-9.]/g, "");
+  // Convert to paise (multiply by 100)
+  let amount = parseFloat(price) * 100;
   var options = {
       "key": "rzp_test_RObXB2QyEtj7Sy", // From Razorpay Dashboard
-      let price = document.getElementById("price").innerHTML;
-      // Remove unwanted characters (₹, $, commas, spaces, etc.)
-      price = price.replace(/[^0-9.]/g, "");
-      "amount": parseFloat(price) * 100, // Amount in paise (50000 = ₹500)
+      "amount": amount, // Amount in paise (50000 = ₹500)
       "currency": "INR",
       "name": "My Website",
       "description": "Test Transaction",
