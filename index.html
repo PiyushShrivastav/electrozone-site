@@ -119,9 +119,6 @@
       options.amount = amount;
       options.name = this.closest(".product").querySelector("h3").innerText;
 
-      // Update amount dynamically
-      options.amount = amount;
-
       // Open Razorpay checkout
       var rzp1 = new Razorpay(options);
       rzp1.open();
