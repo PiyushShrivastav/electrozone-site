@@ -81,7 +81,10 @@
   <script>
   var options = {
       "key": "rzp_test_RObXB2QyEtj7Sy", // From Razorpay Dashboard
-      "amount": document.getElementById("price").innerHTML*100, // Amount in paise (50000 = ₹500)
+      "price": document.getElementById("price").innerHTML,
+      // Remove unwanted characters (₹, $, commas, spaces, etc.)
+      "price": price.replace(/[^0-9.]/g, ""),
+      "amount": parseFloat(price) * 100, // Amount in paise (50000 = ₹500)
       "currency": "INR",
       "name": "My Website",
       "description": "Test Transaction",
